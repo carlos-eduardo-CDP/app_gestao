@@ -28,6 +28,14 @@ Route::prefix('/app')->group(function (){
     Route::get('/fornecedores', [FornecedorController::class, 'actionIndex'])->name('app.fornecedores');
     Route::get('/produtos', function (){return 'Produtos';})->name('app.produtos');
 });
+Route::get('/testar-conexao', function () {
+    try {
+        DB::connection()->getPdo();
+        return 'Conexão bem-sucedida!';
+    } catch (\Exception $e) {
+        return 'Erro na conexão: ' . $e->getMessage();
+    }
+});
 
 
 Route::get('/teste/{p1}/{p2}', [\App\Http\Controllers\TesteController::class, 'teste'])->name('teste');

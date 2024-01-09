@@ -1,5 +1,5 @@
 @extends('site.layouts.basic')
-
+@section('titulo', 'Principal')
 @section('conteudo')
 
     <div class="conteudo-destaque">
