@@ -9,6 +9,11 @@ class ContatoController extends Controller
 {
     public function contato()
     {
+
+        $teste = new \App\Models\SiteContato();
+
+
+
         return view('site.contato');
     }
 }

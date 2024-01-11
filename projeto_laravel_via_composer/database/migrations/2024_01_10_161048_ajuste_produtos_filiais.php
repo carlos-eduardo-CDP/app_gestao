@@ -23,7 +23,7 @@ class AjusteProdutosFiliais extends Migration
             $table->id();
             $table->unsignedBigInteger('filial_id');
             $table->unsignedBigInteger('produto_id');
-            $table->decimal('preco_venda', 8,2);
+            $table->decimal('preco_venda', 8,2)->default(0,01);
             $table->integer('estoque_minimo');
             $table->integer('estoque_maximo');
             $table->timestamps();
@@ -46,9 +46,9 @@ class AjusteProdutosFiliais extends Migration
     public function down()
     {
         Schema::table('produtos', function (Blueprint $table){
-            $table->decimal('preco_venda', 8,2);
-            $table->integer('estoque_minimo', 8,2);
-            $table->integer('estoque_maximo', 8,2);
+            $table->decimal('preco_venda', 8,2)->default(0,01);
+            $table->integer('estoque_minimo')->default(1);
+            $table->integer('estoque_maximo')->default(1);
         });
 
         Schema::dropIfExists('produto_filiais');
